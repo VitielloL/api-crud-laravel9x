@@ -6,6 +6,7 @@ api para cadastro de pessoa
 - Valida o CPF enviado na requisição de cadastro e update.
 
 ##Tecnologias utilizadas:
+
 PHP 8.1.7
 Node.js v16.15.1
 Laravel Framework 9.40.1

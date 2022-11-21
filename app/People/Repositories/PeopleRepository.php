@@ -2,14 +2,16 @@
 
 namespace App\People\Repositories;
 
-use Prettus\Repository\Contracts\RepositoryInterface;
+use App\People\Models\People;
+use App\Base\Repositories\BaseRepository;
+use App\People\Models\PeopleRepositoryInterface;
 
 /**
  * Interface PeopleRepository.
  *
  * @package namespace App\People\Repositories;
  */
-interface PeopleRepository extends RepositoryInterface
+class PeopleRepository extends BaseRepository implements PeopleRepositoryInterface
 {
-    //
+    protected string $model = People::class;
 }

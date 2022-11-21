@@ -5,7 +5,7 @@ namespace App\People\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\People\Http\Requests\PeopleStoreRequest;
 use App\People\Http\Requests\PeopleUpdateRequest;
-use App\Base\Repositories\BaseRepositoryInterface;
+use App\People\Models\PeopleRepositoryInterface;
 use App\Base\Services\ValidateCepService;
 use App\Base\Services\ValidateCpfService;
 use Illuminate\Http\Request;
@@ -14,9 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
 class PeopleAPIController extends Controller
 {
     /**
-     * @var BaseRepositoryInterface
+     * @var PeopleRepositoryInterface
      */
-    private $baseRepository;
+    private $peopleRepository;
 
     /**
      * @var ValidateCepService
@@ -29,11 +29,11 @@ class PeopleAPIController extends Controller
     private $validadeCpfService;
 
     public function __construct(
-        BaseRepositoryInterface $baseRepository,
+        PeopleRepositoryInterface $peopleRepository,
         ValidateCepService $validadeCepService,
         ValidateCpfService $validadeCpfService
     ) {
-        $this->baseRepository = $baseRepository;
+        $this->peopleRepository = $peopleRepository;
         $this->validadeCepService = $validadeCepService;
         $this->validadeCpfService = $validadeCpfService;
     }
@@ -45,7 +45,7 @@ class PeopleAPIController extends Controller
      */
     public function index()
     {
-        $peoples = $this->baseRepository->all();
+        $peoples = $this->peopleRepository->all();
         if ($peoples) {
             return response()->json($peoples, Response::HTTP_OK);
         }
@@ -61,7 +61,7 @@ class PeopleAPIController extends Controller
         $cpf = $this->validadeCpfService->validateCpf($request->cpf);
         $cep = $this->validadeCepService->validateCep($request->cep);
         if ($cep && $cpf) {
-            $people = $this->baseRepository->create($request->all());
+            $people = $this->peopleRepository->create($request->all());
             if ($people) {
                 return response()->json($people, Response::HTTP_OK);
             }
@@ -76,7 +76,7 @@ class PeopleAPIController extends Controller
      */
     public function show($id)
     {
-        $people = $this->baseRepository->find($id);
+        $people = $this->peopleRepository->find($id);
         if ($people) {
             return response()->json($people, Response::HTTP_OK);
         }
@@ -95,7 +95,7 @@ class PeopleAPIController extends Controller
         $cpf = $this->validadeCpfService->validateCpf($request->cpf);
         $cep = $this->validadeCepService->validateCep($request->cep);
         if ($cep && $cpf) {
-            $people = $this->baseRepository->update($request->all(), $id);
+            $people = $this->peopleRepository->update($request->all(), $id);
             if ($people) {
                 return response()->json($people, Response::HTTP_OK);
             }
@@ -112,7 +112,7 @@ class PeopleAPIController extends Controller
      */
     public function destroy($id)
     {
-        $people = $this->baseRepository->delete($id);
+        $people = $this->peopleRepository->delete($id);
         if ($people) {
             return response()->json('people deletada', Response::HTTP_OK);
         }

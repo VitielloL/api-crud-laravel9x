@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Base\Services;
-
-use GuzzleHttp\Client;
+namespace App\Services;
 
 class ValidateCpfService
 {

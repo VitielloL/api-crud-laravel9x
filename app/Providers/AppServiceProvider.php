@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Base\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,6 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app->register(PeopleServiceProvider::class);
     }
 }

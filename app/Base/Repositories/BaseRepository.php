@@ -2,19 +2,20 @@
 
 namespace App\Base\Repositories;
 
+use App\People\Repositories\PessoaRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 
 class BaseRepository
 {
       /**
-     * @var PessoaRepository
+     * @var PeopleRepository
      */
-    private $pessoaRepo;
+    private $peopleRepo;
 
-    public function __construct(PessoaRepository $pessoaRepository)
+    public function __construct(PeopleRepository $peopleRepository)
     {
-        $this->pessoaRepo = $pessoaRepository;
+        $this->peopleRepo = $peopleRepository;
     }
 
     /**
@@ -22,7 +23,7 @@ class BaseRepository
      */
     public function find(int $id): ?Model
     {
-        return $this->pessoaRepo->find($id);
+        return $this->peopleRepo->find($id);
     }
 
     /**
@@ -30,7 +31,7 @@ class BaseRepository
      */
     public function all(): ?Collection
     {
-        return $this->pessoaRepo->all();
+        return $this->peopleRepo->all();
     }
 
     /**
@@ -38,7 +39,7 @@ class BaseRepository
      */
     public function create(array $data): ?Model
     {
-        return $this->pessoaRepo->create($data);
+        return $this->peopleRepo->create($data);
     }
 
     /**
@@ -46,7 +47,7 @@ class BaseRepository
      */
     public function delete(int $id): ?bool
     {
-        return $this->pessoaRepo->delete($id);
+        return $this->peopleRepo->delete($id);
     }
 
     /**
@@ -54,6 +55,6 @@ class BaseRepository
      */
     public function update(array $data, int $id): ?Model
     {
-        return $this->pessoaRepo->update($data, $id);
+        return $this->peopleRepo->update($data, $id);
     }
 }

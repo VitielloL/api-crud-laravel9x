@@ -2,11 +2,11 @@
 
 namespace App\Base\Repositories;
 
-use App\People\Repositories\PessoaRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
+use App\Base\Models\BaseRepositoryInterface;
 
-class BaseRepository
+class BaseRepository implements BaseRepositoryInterface
 {
     protected string $model;
 
@@ -14,53 +14,27 @@ class BaseRepository
     {
         return $this->model::findOrFail($id);
     }
-    //   /**
-    //  * @var PeopleRepository
-    //  */
-    // private $peopleRepo;
 
-    // public function __construct(PeopleRepository $peopleRepository)
-    // {
-    //     $this->peopleRepo = $peopleRepository;
-    // }
+    public function all(): ?Collection
+    {
+        return $this->model::all();
+    }
 
-    // /**
-    //  * @inheritDoc
-    //  */
-    // public function find(int $id): ?Model
-    // {
-    //     return $this->peopleRepo->find($id);
-    // }
+    public function create(array $data): ?Model
+    {
+        return $this->model::create($data);
+    }
 
-    // /**
-    //  * @inheritDoc
-    //  */
-    // public function all(): ?Collection
-    // {
-    //     return $this->peopleRepo->all();
-    // }
+    public function delete(int $id): void
+    {
+        $model = $this->find($id);
+        $model->delete();
+    }
 
-    // /**
-    //  * @inheritDoc
-    //  */
-    // public function create(array $data): ?Model
-    // {
-    //     return $this->peopleRepo->create($data);
-    // }
-
-    // /**
-    //  * @inheritDoc
-    //  */
-    // public function delete(int $id): ?bool
-    // {
-    //     return $this->peopleRepo->delete($id);
-    // }
-
-    // /**
-    //  * @inheritDoc
-    //  */
-    // public function update(array $data, int $id): ?Model
-    // {
-    //     return $this->peopleRepo->update($data, $id);
-    // }
+    public function update(array $data, int $id): ?Model
+    {
+        $model = $this->find($id);
+        $model->update($data);
+        return $model;
+    }
 }

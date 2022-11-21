@@ -2,8 +2,7 @@
 
 namespace App\People\Models;
 
-use App\Base\Repositories\BaseRepositoryInterface;
-
+use App\Base\Models\BaseRepositoryInterface;
 
 /**
  * Class PeopleRepositoryEloquent.

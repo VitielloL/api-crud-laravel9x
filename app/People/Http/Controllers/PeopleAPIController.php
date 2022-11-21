@@ -112,10 +112,6 @@ class PeopleAPIController extends Controller
      */
     public function destroy($id)
     {
-        $people = $this->peopleRepository->delete($id);
-        if ($people) {
-            return response()->json('people deletada', Response::HTTP_OK);
-        }
-        return response()->json('erro ao deletar people', Response::HTTP_BAD_REQUEST);
+        $this->peopleRepository->delete($id);
     }
 }

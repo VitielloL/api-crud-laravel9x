@@ -13,27 +13,27 @@ interface BaseRepositoryInterface
      */
     public function find(int $id): ?Model;
 
-    /**
-     * @return Collection|null
-     */
-    public function all(): ?Collection;
+    // /**
+    //  * @return Collection|null
+    //  */
+    // public function all(): ?Collection;
 
-    /**
-     * @param array $data
-     * @return Model|null
-     */
-    public function create(array $data): ?Model;
+    // /**
+    //  * @param array $data
+    //  * @return Model|null
+    //  */
+    // public function create(array $data): ?Model;
 
-    /**
-     * @param int $id
-     * @return bool|null
-     */
-    public function delete(int $id): ?bool;
+    // /**
+    //  * @param int $id
+    //  * @return bool|null
+    //  */
+    // public function delete(int $id): ?bool;
 
-    /**
-     * @param array $data
-     * @param int $id
-     * @return Model|null
-     */
-    public function update(array $data, int $id): ?Model;
+    // /**
+    //  * @param array $data
+    //  * @param int $id
+    //  * @return Model|null
+    //  */
+    // public function update(array $data, int $id): ?Model;
 }

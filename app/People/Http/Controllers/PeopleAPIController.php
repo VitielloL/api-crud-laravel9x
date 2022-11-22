@@ -2,7 +2,7 @@
 
 namespace App\People\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Base\Http\Controllers\Controller;
 use App\People\Http\Requests\PeopleStoreRequest;
 use App\People\Http\Requests\PeopleUpdateRequest;
 use App\People\Models\PeopleRepositoryInterface;

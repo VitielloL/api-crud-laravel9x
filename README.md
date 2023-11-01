@@ -1,7 +1,6 @@
 # api-crud-laravel9x
 
-api para cadastro de pessoa
-
+API para cadastro de pessoa:
 * CRUD de pessoa
 * Valida o CEP enviado na requisição de cadastro e updat, base de dados do ViaCEP: https://viacep.com.br.
 * Valida o CPF enviado na requisição de cadastro e update.
